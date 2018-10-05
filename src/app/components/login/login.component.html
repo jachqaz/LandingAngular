@@ -1,3 +1,8 @@
-<p>
-  login works!
-</p>
+<div *ngIf="user==null">
+  <button class="btn btn-primary" (click)="login()">Login with Google</button>
+</div>
+<div *ngIf="user!=null">
+  {{user.displayName}}
+  <button class="btn btn-primary" (click)="logout()">Logout</button>
+</div>
+
