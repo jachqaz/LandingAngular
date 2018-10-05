@@ -1,18 +1,18 @@
-<ul>
-  <li *ngFor="let item of items | async">
-    {{ item.name }}
-  </li>
-</ul>
-<div class="col-lg-6">
-  <div class="input-group">
-    <div class="input-group-prepend">
-      <span class="input-group-text">Cuenta $</span>
-    </div>
-    <input name="nombre" type="text" class="form-control"
-           aria-label="Amount (to the nearest dollar)" required (keyup.enter)="addItem(nombre)" #nombre>
-    <div class="input-group-append">
-      <span class="input-group-text">.00</span>
-    </div>
-  </div>
-  <!--<button type="submit" class="btn btn-success" (click)="addItem(nombre)">Calcular</button>-->
-</div>
+<!--<ul>-->
+<!--<li *ngFor="let item of items | async">-->
+<!--{{ item.name }}-->
+<!--</li>-->
+<!--</ul>-->
+<!--<div class="col-lg-6">-->
+<!--<div class="input-group">-->
+<!--<div class="input-group-prepend">-->
+<!--<span class="input-group-text">Cuenta $</span>-->
+<!--</div>-->
+<!--<input name="nombre" type="text" class="form-control"-->
+<!--aria-label="Amount (to the nearest dollar)" required (keyup.enter)="addItem(nombre)" #nombre>-->
+<!--<div class="input-group-append">-->
+<!--<span class="input-group-text">.00</span>-->
+<!--</div>-->
+<!--</div>-->
+<!--&lt;!&ndash;<button type="submit" class="btn btn-success" (click)="addItem(nombre)">Calcular</button>&ndash;&gt;-->
+<!--</div>-->
