@@ -1,8 +1,16 @@
-<div *ngIf="user==null">
-  <button class="btn btn-primary" (click)="login()">Login with Google</button>
-</div>
-<div *ngIf="user!=null">
-  {{user.displayName}}
-  <button class="btn btn-primary" (click)="logout()">Logout</button>
-</div>
+<!--<div *ngIf="user==null">-->
+<!--<button class="btn btn-primary" (click)="login()">Login with Google</button>-->
+<!--</div>-->
+<!--<div *ngIf="user!=null">-->
+<!--{{user.displayName}}-->
+<!--<button class="btn btn-primary" (click)="logout()">Logout</button>-->
+<!--</div>-->
 
+<div *ngIf="afAuth.user | async as user; else showLogin">
+  <h1>Hello {{ user.displayName }}!</h1>
+  <button (click)="logout()">Logout</button>
+</div>
+<ng-template #showLogin>
+  <p>Please login.</p>
+  <button (click)="login()">Login with Google</button>
+</ng-template>

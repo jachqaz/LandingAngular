@@ -1,11 +1,11 @@
 // MODULES
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 // FIREBASE
 import {AngularFireModule} from 'angularfire2';
-// import {AngularFirestoreModule} from 'angularfire2/firestore';
 import {AngularFireAuthModule} from '@angular/fire/auth';
+import {AngularFireDatabaseModule} from '../../node_modules/angularfire2/database';
 // COMPONENTS
 import {AppComponent} from './app.component';
 import {environment} from '../environments/environment';
@@ -17,6 +17,13 @@ import {AdvisoryComponent} from './components/advisory/advisory.component';
 import {HomeComponent} from './components/home/home.component';
 import {RouterModule, Routes} from '@angular/router';
 import {MainComponent} from './components/main/main.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {HttpModule} from '@angular/http';
+import {MatButtonModule, MatCardModule, MatInputModule, MatMenuModule, MatSelectModule, MatToolbarModule} from '@angular/material';
+import {DetallesComponent} from './components/test/detalles/detalles.component';
+import {EditarComponent} from './components/test/editar/editar.component';
+import {FirebaseService} from './services/firebase.service';
+
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -32,17 +39,29 @@ const appRoutes: Routes = [
     LoginComponent,
     AdvisoryComponent,
     HomeComponent,
-    MainComponent
+    MainComponent,
+    DetallesComponent,
+    EditarComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    // AngularFirestoreModule,
     AngularFireAuthModule,
-    RouterModule.forRoot(appRoutes, {enableTracing: true})
+    AngularFireDatabaseModule,
+    RouterModule.forRoot(appRoutes, {enableTracing: true}),
+    ReactiveFormsModule,
+    HttpModule,
+    BrowserAnimationsModule,
+    MatMenuModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatCardModule,
+    MatSelectModule,
+    MatInputModule,
+
   ],
-  providers: [],
+  providers: [FirebaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

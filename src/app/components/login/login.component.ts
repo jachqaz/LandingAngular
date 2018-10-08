@@ -12,22 +12,28 @@ export class LoginComponent implements OnInit {
   user: firebase.User;
 
   constructor(
-    private afAuth: AngularFireAuth,
+    public afAuth: AngularFireAuth,
     private route: ActivatedRoute,
     private router: Router) {
     afAuth.authState.subscribe(user => this.user = user);
   }
 
   ngOnInit() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.router.navigate(['/home']);
+      } else {
+      }
+    });
   }
 
   login() {
     this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
-    this.router.navigate(['/home']);
   }
 
   logout() {
     this.afAuth.auth.signOut();
     this.router.navigate(['']);
   }
+
 }

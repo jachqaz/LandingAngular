@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {FirebaseService} from '../../services/firebase.service';
 
 @Component({
   selector: 'app-main',
@@ -7,10 +8,35 @@ import {Component, OnInit} from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  constructor() {
+  title = 'Contactos';
+  contactos: any[];
+  ciudades = ['todo', 'bogota', 'cali', 'medellin', 'Otra Ciudad'];
+  contacto = null;
+  contactoEditar = null;
+
+  constructor(private servicio: FirebaseService) {
   }
 
   ngOnInit() {
+    this.servicio.getContactos()
+      .valueChanges().subscribe(contactos => this.contactos = contactos);
+
   }
 
+  onClick(contacto) {
+    this.contacto = contacto;
+  }
+
+  cerrarDetalles() {
+    this.contacto = null;
+  }
+
+  onEditar(contacto) {
+    this.contactoEditar = contacto;
+  }
+
+  cerrarEdicion() {
+    this.contactoEditar = null;
+  }
 }
+
