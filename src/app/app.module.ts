@@ -19,10 +19,19 @@ import {RouterModule, Routes} from '@angular/router';
 import {MainComponent} from './components/main/main.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpModule} from '@angular/http';
-import {MatButtonModule, MatCardModule, MatInputModule, MatMenuModule, MatSelectModule, MatToolbarModule} from '@angular/material';
-import {DetallesComponent} from './components/test/detalles/detalles.component';
-import {EditarComponent} from './components/test/editar/editar.component';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatInputModule,
+  MatMenuModule,
+  MatSelectModule,
+  MatSliderModule,
+  MatToolbarModule
+} from '@angular/material';
+import {DetailsComponent} from './components/details/details.component';
+import {EditComponent} from './components/edit/edit.component';
 import {FirebaseService} from './services/firebase.service';
+import {ReviewsComponent} from './components/reviews/reviews.component';
 
 
 const appRoutes: Routes = [
@@ -40,8 +49,9 @@ const appRoutes: Routes = [
     AdvisoryComponent,
     HomeComponent,
     MainComponent,
-    DetallesComponent,
-    EditarComponent
+    DetailsComponent,
+    EditComponent,
+    ReviewsComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +69,7 @@ const appRoutes: Routes = [
     MatCardModule,
     MatSelectModule,
     MatInputModule,
-
+    MatSliderModule
   ],
   providers: [FirebaseService],
   bootstrap: [AppComponent]

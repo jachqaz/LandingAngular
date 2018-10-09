@@ -9,8 +9,7 @@ import {FirebaseService} from '../../services/firebase.service';
 export class MainComponent implements OnInit {
 
   title = 'Contactos';
-  contactos: any[];
-  ciudades = ['todo', 'bogota', 'cali', 'medellin', 'Otra Ciudad'];
+  contactos;
   contacto = null;
   contactoEditar = null;
 
@@ -19,8 +18,7 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     this.servicio.getContactos()
-      .valueChanges().subscribe(contactos => this.contactos = contactos);
-
+      .subscribe(contactos => this.contactos = contactos);
   }
 
   onClick(contacto) {
@@ -33,6 +31,10 @@ export class MainComponent implements OnInit {
 
   onEditar(contacto) {
     this.contactoEditar = contacto;
+  }
+
+  onEliminar(contacto) {
+    this.servicio.deleteContacto(contacto.key);
   }
 
   cerrarEdicion() {

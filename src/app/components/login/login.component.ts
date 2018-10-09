@@ -11,6 +11,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class LoginComponent implements OnInit {
   user: firebase.User;
 
+
   constructor(
     public afAuth: AngularFireAuth,
     private route: ActivatedRoute,
@@ -21,11 +22,13 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
+        this.router.navigated = false;
         this.router.navigate(['/home']);
       } else {
       }
     });
   }
+
 
   login() {
     this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());

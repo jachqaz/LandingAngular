@@ -2,15 +2,15 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {FirebaseService} from '../../services/firebase.service';
 
-
 @Component({
-  selector: 'app-advisory',
-  templateUrl: './advisory.component.html',
-  styleUrls: ['./advisory.component.css']
+  selector: 'app-reviews',
+  templateUrl: './reviews.component.html',
+  styleUrls: ['./reviews.component.css']
 })
-export class AdvisoryComponent implements OnInit {
+export class ReviewsComponent implements OnInit {
 
   form: FormGroup;
+  reviews;
 
   constructor(
     private service: FirebaseService,
@@ -19,23 +19,21 @@ export class AdvisoryComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.service.getReviews()
+      .subscribe(reviews => this.reviews = reviews);
     this.initForm();
   }
 
   initForm() {
     this.form = this.fb.group({
       nombre: '',
-      apellidos: '',
-      telefono: '',
-      ciudad: '',
-      email: ''
+      opinion: '',
+      puntaje: ''
     });
   }
 
   onCrear() {
-    this.service.addContacto(this.form.value);
+    this.service.addReview(this.form.value);
     this.initForm();
   }
-
-
 }

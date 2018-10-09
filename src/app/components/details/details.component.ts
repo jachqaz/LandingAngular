@@ -2,10 +2,10 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-detalles',
-  templateUrl: './detalles.component.html',
-  styleUrls: ['./detalles.component.css']
+  templateUrl: './details.component.html',
+  styleUrls: ['./details.component.css']
 })
-export class DetallesComponent implements OnInit {
+export class DetailsComponent implements OnInit {
 
   @Input() contacto: any = null;
   @Output() cerrar = new EventEmitter();
