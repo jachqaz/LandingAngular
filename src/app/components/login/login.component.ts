@@ -20,18 +20,26 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        this.router.navigated = false;
+    this.afAuth.auth.getRedirectResult().then(result => {
+      if (result.user) {
         this.router.navigate(['/home']);
-      } else {
       }
     });
+    // firebase.auth().onAuthStateChanged((user) => {
+    //   if (user) {
+    //     this.router.navigated = false;
+    //     this.router.navigate(['/home']);
+    //   } else {
+    //   }
+    // });
   }
 
 
   login() {
     this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+
+    // this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    // this.router.navigate(['/home']);
   }
 
   logout() {
