@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {FirebaseService} from '../../services/firebase.service';
 
 @Component({
@@ -14,7 +14,6 @@ export class ReviewsComponent implements OnInit {
 
   constructor(
     private service: FirebaseService,
-    private fb: FormBuilder
   ) {
   }
 
@@ -25,10 +24,10 @@ export class ReviewsComponent implements OnInit {
   }
 
   initForm() {
-    this.form = this.fb.group({
-      nombre: '',
-      opinion: '',
-      puntaje: ''
+    this.form = new FormGroup({
+      nombre: new FormControl('', Validators.required),
+      opinion: new FormControl('', Validators.required),
+      puntaje: new FormControl()
     });
   }
 

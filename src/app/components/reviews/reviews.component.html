@@ -1,4 +1,4 @@
-<form [formGroup]="form" novalidate>
+<form [formGroup]="form" (validSubmit)="onCrear()">
   <div class="card" id="opinion">
     <div class="card text-center" style="background-color: #cdd6db">
       <div class="card-header font-weight-bold">
@@ -6,18 +6,19 @@
       </div>
       <div class="card-body">
         <div class="col-md-12 col-sm-10">
-          <div class="input-group mb-2">
+          <div class="input-group mb-3 form-group">
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon1"><i class="material-icons md-36">assignment_ind</i></span>
             </div>
             <input type="text" maxlength="100" minlength="0" class="form-control" name="nombre"
                    placeholder="Nombres" aria-label="Nombres" aria-describedby="basic-addon1" formControlName="nombre"
                    matInput autofocus required>
+            <bfv-messages></bfv-messages>
           </div>
         </div>
 
         <div class="col-md-12 col-sm-10">
-          <div class="input-group mb-2">
+          <div class="input-group mb-3 form-group">
             <div class="input-group-prepend">
               <span class="input-group-text" id="basic-addon2"><i class="material-icons md-36">edit</i></span>
             </div>
@@ -35,7 +36,7 @@
           <div class="trans btn-lg">
             <div class="trans btn-lg">
               <div class="text-center">
-                <button type="submit" (click)="onCrear()" class="btn btn-success btn-lg btn-sm">Enviar<i
+                <button type="submit" class="btn btn-success btn-lg btn-sm">Enviar<i
                   class="material-icons md-36">check</i></button>
               </div>
             </div>

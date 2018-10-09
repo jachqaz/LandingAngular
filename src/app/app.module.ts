@@ -2,6 +2,19 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import {RouterModule, Routes} from '@angular/router';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatInputModule,
+  MatMenuModule,
+  MatSelectModule,
+  MatSliderModule,
+  MatToolbarModule
+} from '@angular/material';
+import {NgBootstrapFormValidationModule} from 'ng-bootstrap-form-validation';
 // FIREBASE
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireAuthModule} from '@angular/fire/auth';
@@ -15,19 +28,7 @@ import {ContentComponent} from './components/content/content.component';
 import {LoginComponent} from './components/login/login.component';
 import {AdvisoryComponent} from './components/advisory/advisory.component';
 import {HomeComponent} from './components/home/home.component';
-import {RouterModule, Routes} from '@angular/router';
 import {MainComponent} from './components/main/main.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {HttpModule} from '@angular/http';
-import {
-  MatButtonModule,
-  MatCardModule,
-  MatInputModule,
-  MatMenuModule,
-  MatSelectModule,
-  MatSliderModule,
-  MatToolbarModule
-} from '@angular/material';
 import {DetailsComponent} from './components/details/details.component';
 import {EditComponent} from './components/edit/edit.component';
 import {FirebaseService} from './services/firebase.service';
@@ -61,7 +62,7 @@ const appRoutes: Routes = [
     AngularFireDatabaseModule,
     RouterModule.forRoot(appRoutes, {enableTracing: true}),
     ReactiveFormsModule,
-    HttpModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatMenuModule,
     MatToolbarModule,
@@ -69,7 +70,8 @@ const appRoutes: Routes = [
     MatCardModule,
     MatSelectModule,
     MatInputModule,
-    MatSliderModule
+    MatSliderModule,
+    NgBootstrapFormValidationModule.forRoot()
   ],
   providers: [FirebaseService],
   bootstrap: [AppComponent]
